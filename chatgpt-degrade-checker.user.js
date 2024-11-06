@@ -54,7 +54,18 @@
             ">?</span><br>
             IP质量: <span id="ip-quality">N/A</span><br>
             <span id="persona-container" style="display: none">用户类型: <span id="persona">N/A</span></span>
-        </div>`;
+        </div>
+        <div style="
+            margin-top: 12px;
+            padding-top: 8px;
+            border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            letter-spacing: 0.3px;
+        ">
+            ChatGPT Degrade Checker
+    </div>`;
     document.body.appendChild(displayBox);
 
     // 创建收缩状态的指示器
