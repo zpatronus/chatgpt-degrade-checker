@@ -1,6 +1,8 @@
 // ==UserScript==
 // @name         ChatGPT降级检测
-// @namespace    https://github.com/KoriIku/chatgpt-degrade-check
+// @namespace    https://github.com/KoriIku/chatgpt-degrade-checker
+// @homepage     https://github.com/KoriIku/chatgpt-degrade-checker
+// @author       KoriIku
 // @version      1.7
 // @description  由于 ChatGPT 会对某些 ip 进行无提示的服务降级，此脚本用于检测你的 ip 在 ChatGPT 数据库中的风险等级。
 // @match        *://chatgpt.com/*
