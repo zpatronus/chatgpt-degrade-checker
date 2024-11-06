@@ -2,7 +2,9 @@
 由于 ChatGPT 会对某些 ip 进行无提示的服务降级，此脚本用于检测你的 ip 是否被 ChatGPT 判定为高风险。在一定程度上可以用于辅助判断你的 ip 是否遭到服务降级。
 
 ## 安装及使用
-点击链接安装: [点此安装](https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js)
+首先安装 tampermonkey：https://www.tampermonkey.net/
+
+然后点击链接安装本工具:  [点此安装](https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js)
 
 安装本脚本后打开 chatgpt，你可以在屏幕右侧看到一个绿色圆圈，鼠标移上去之后会显示详细信息，如果 PoW 难度的值很低，代表你的 ip 可能被判断为了高风险。
 
