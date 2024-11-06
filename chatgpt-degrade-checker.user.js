@@ -3,7 +3,7 @@
 // @namespace    https://github.com/KoriIku/chatgpt-degrade-checker
 // @homepage     https://github.com/KoriIku/chatgpt-degrade-checker
 // @author       KoriIku
-// @version      1.7
+// @version      1.8
 // @description  由于 ChatGPT 会对某些 ip 进行无提示的服务降级，此脚本用于检测你的 ip 在 ChatGPT 数据库中的风险等级。
 // @match        *://chatgpt.com/*
 // @grant        none
@@ -51,6 +51,7 @@
                 border: 1px solid #fff;
                 margin-left: 3px;
             ">?</span><br>
+            IP质量: <span id="ip-quality">N/A</span><br>
             用户类型: <span id="persona">N/A</span>
         </div>`;
     document.body.appendChild(displayBox);
@@ -102,7 +103,7 @@
     const tooltip = document.createElement('div');
     tooltip.id = 'tooltip';
     tooltip.innerText = '这个值越小，代表PoW难度越高，ChatGPT认为你的IP风险越高。';
-    tooltip.style.position = 'absolute';
+    tooltip.style.position = 'fixed';
     tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     tooltip.style.color = '#fff';
     tooltip.style.padding = '8px 12px';
@@ -112,6 +113,7 @@
     tooltip.style.zIndex = '10001';
     tooltip.style.width = '240px';
     tooltip.style.lineHeight = '1.4';
+    tooltip.style.pointerEvents = 'none';
     document.body.appendChild(tooltip);
 
     // 显示提示
@@ -146,37 +148,48 @@
     function updateDifficultyIndicator(difficulty) {
         const indicator = document.getElementById('difficulty-indicator');
         const difficultyLevel = document.getElementById('difficulty-level');
+        const ipQuality = document.getElementById('ip-quality');
 
         if (difficulty === 'N/A') {
             indicator.style.backgroundColor = '#888';
             indicator.style.transform = 'scale(0.8)';
             difficultyLevel.innerText = '';
+            ipQuality.innerHTML = 'N/A';
             return;
         }
 
-        // 去掉前导的0x，如果有的话
-        const cleanDifficulty = difficulty.replace('0x', '');
+        // 去掉前导的0x和前导0，只保留有效的十六进制位数
+        const cleanDifficulty = difficulty.replace('0x', '').replace(/^0+/, '');
 
-        // 获取十六进制字符串的长度
+        // 获取实际的十六进制字符串的长度
         const hexLength = cleanDifficulty.length;
 
-        let color, scale, level, textColor;
+        let color, scale, level, textColor, qualityText;
 
-        if (hexLength <= 3) { // 3位以下（包括3位）为高难度 - 红色
+        if (hexLength <= 2) { // 2位及以下为高风险 - 红色
             color = '#F44336';
             textColor = '#ff6b6b';
             scale = 1.2;
-            level = '(难)';
-        } else if (hexLength <= 4) { // 4位为中等难度 - 黄色
+            level = '(困难)';
+            qualityText = '高风险';
+        } else if (hexLength === 3) { // 3位为中等 - 黄色
             color = '#FFC107';
             textColor = '#ffd700';
             scale = 1;
-            level = '(中)';
-        } else { // 5位及以上为低难度 - 绿色
+            level = '(中等)';
+            qualityText = '中等';
+        } else if (hexLength === 4) { // 4位为良好 - 浅绿色
+            color = '#8BC34A';
+            textColor = '#9acd32';
+            scale = 0.9;
+            level = '(简单)';
+            qualityText = '良好';
+        } else { // 5位及以上为优秀 - 深绿色
             color = '#4CAF50';
             textColor = '#98fb98';
             scale = 0.8;
-            level = '(简单)';
+            level = '(极易)';
+            qualityText = '优秀';
         }
 
         indicator.style.backgroundColor = color;
@@ -185,6 +198,9 @@
 
         // 更新难度等级文本
         difficultyLevel.innerHTML = `<span style="color: ${textColor}">${level}</span>`;
+        
+        // 更新 IP 质量文本
+        ipQuality.innerHTML = `<span style="color: ${textColor}">${qualityText}</span>`;
     }
 
     // 拦截 fetch 请求
