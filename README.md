@@ -4,7 +4,7 @@
 ## 安装及使用
 1. 首先安装 tampermonkey：https://www.tampermonkey.net/
 
-2. 然后点击链接安装本工具:  [点此安装](https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js)
+2. 然后点击链接安装本工具： [点此安装](https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js)
 
 3. 安装本脚本后打开 chatgpt，你可以在屏幕右侧看到一个绿色圆圈，鼠标移上去之后会显示详细信息，如果 PoW 难度的值很低，代表你的 ip 可能被判断为了高风险。
 
