@@ -1,3 +1,29 @@
+# ChatGPT Service Downgrade Detection Tool
+
+This tool helps detect if ChatGPT has limited access to certain features on your account by downgrading service due to a "high-risk" IP designation. Users encountering issues like the inability to generate images with GPT-4, limited web search access, or simplified responses from GPT-3.5 may benefit from running this script to identify potential downgrades.
+
+## Installation and Usage
+1. First, install Tampermonkey: https://www.tampermonkey.net/
+
+2. Then, click this link to install the tool: [Click to Install](https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js)
+
+3. After installation, open [ChatGPT](https://chatgpt.com/). A green circle will appear on the right side of the screen. Hover over it to view diagnostic details. If the Proof of Work (PoW) difficulty displayed is unusually low, it may suggest that your IP has been flagged, which could result in limited access to certain features.
+
+   As a reference, PoW values with five or more digits generally indicate an unrestricted IP that should allow full access to ChatGPT’s capabilities. Values of 000032 or lower could indicate that the IP is considered high-risk, leading to restricted functionality.
+
+   _(Note: PoW levels can vary even for the same IP. For example, after completing a higher difficulty PoW, the next one may be slightly easier, although it typically won’t drop to “simple.”)_
+
+## What Is a Service Downgrade?
+When certain IPs are flagged as high-risk, ChatGPT may silently downgrade access by switching to a lower-tier model, such as the 4o-mini variant or a simpler model, without notifying the user.
+
+### Effects of Service Downgrades
+With service downgrades, even ChatGPT Plus users may notice missing features like web search and image generation on GPT-4. Similarly, if downgraded to a lighter GPT-3.5 model, responses may become more basic, with less depth in reasoning. 
+
+For users experiencing sudden changes in ChatGPT functionality—like missing image generation, web search, or nuanced responses—this tool may help clarify if a silent downgrade is impacting their experience.
+
+
+---
+
 # ChatGPT 服务降级检测工具
 由于 ChatGPT 会对某些 ip 进行无提示的服务降级，此脚本用于检测你的 ip 是否被 ChatGPT 判定为高风险。在一定程度上可以用于辅助判断你的 ip 是否遭到服务降级。
 
@@ -17,4 +43,7 @@ ChatGPT 会对一些被判断为高风险的 ip 降级服务，偷偷将模型�
 
 ### 服务降级有什么影响
 降级后，即便你是 plus 用户，在使用 4o 模型时会发现无法使用联网搜索、图片生成等功能，使用 o1 模型时，会发现模型不进行思考直接回答。
+
+
+
 
