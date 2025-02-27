@@ -8,8 +8,8 @@
 // @description  由于 ChatGPT 会对某些 ip 进行无提示的服务降级，此脚本用于检测你的 ip 在 ChatGPT 数据库中的风险等级。
 // @match        *://chatgpt.com/*
 // @grant        none
-// @downloadURL  https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js
-// @updateURL    https://update.greasyfork.org/scripts/516051/ChatGPT%E9%99%8D%E7%BA%A7%E6%A3%80%E6%B5%8B.user.js
+// @downloadURL  https://github.com/zpatronus/chatgpt-degrade-checker/raw/refs/heads/main/chatgpt-degrade-checker.user.js
+// @updateURL    https://github.com/zpatronus/chatgpt-degrade-checker/raw/refs/heads/main/chatgpt-degrade-checker.user.js
 // @license AGPLv3
 // ==/UserScript==
 
